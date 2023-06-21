@@ -1,6 +1,7 @@
 #  Caches
 **/.ipynb_checkpoints/*
 **/__pycache__/*
+**/joblib/*
 *.pyc
 
 # Data

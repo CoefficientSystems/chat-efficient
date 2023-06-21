@@ -8,7 +8,7 @@
     "prettier.enable": true,
 
     // python - black
-    "python.formatting.provider": "black",
+    "python.formatting.provider": "none",
     "python.formatting.blackArgs": [],
 
     // python - other
@@ -30,7 +30,8 @@
         "editor.codeActionsOnSave": {"source.organizeImports": true},
         // Stop the 'Black does not support "Format Selection"' message every
         // time you paste something (https://stackoverflow.com/a/63612401/3279076)
-        "editor.formatOnPaste": false
+        "editor.formatOnPaste": false,
+        "editor.defaultFormatter": "ms-python.black-formatter"
     },
 
     // python - pytest (https://code.visualstudio.com/docs/python/testing)

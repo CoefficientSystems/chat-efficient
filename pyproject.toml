@@ -18,7 +18,13 @@ packages = [
 python = "^3.11.3"
 # Everything below here is alphabetically sorted
 ipykernel = "^6.23.2"
+joblib = "^1.2.0"
 jupyterlab = "^4.0.2"
+lxml = "^4.9.2"
+openai = "^0.27.8"
+streamlit = "^1.23.1"
+streamlit-chat = "^0.0.2.2"
+watchdog = "^3.0.0"
 
 [tool.poetry.dev-dependencies]
 # Everything below here is alphabetically sorted
@@ -63,7 +69,6 @@ line_length = 100
 default_section = "THIRDPARTY"
 known_first_party = ["chatefficient"]
 sections = "FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
-add_imports = "from __future__ import annotations"
 
 [tool.pylint.MASTER]
 ignore-paths = [".git"]
@@ -79,7 +84,7 @@ max-statements = 89
 max-args = 22
 max-branches = 17
 # good-names = []
-# disable = []
+disable = ["pointless-statement"]
 logging-format-style = "new"
 
 ##############
