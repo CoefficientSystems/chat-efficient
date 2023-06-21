@@ -1,0 +1,151 @@
+###########
+# 📜 Poetry
+###########
+[tool.poetry]
+name = "chatefficient"
+version = "0.1.0"
+description = "DIY ChatGPT using Streamlit, LangChain and open-source LLMs"
+authors = ["John Sandall <contact@coefficient.ai>"]
+license = "UNLICENSED"
+classifiers = ["Private :: Do Not Upload"]
+packages = [
+  { include = "chatefficient", from = "chatefficient" },
+  # Add more packages here, e.g.
+  # { include = "module_name", from = "chatefficient" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11.3"
+# Everything below here is alphabetically sorted
+ipykernel = "^6.23.2"
+jupyterlab = "^4.0.2"
+
+[tool.poetry.dev-dependencies]
+# Everything below here is alphabetically sorted
+bandit = "^1.7.5"
+black = "^23.3.0"
+detect-secrets = "1.2.0"
+flake8 = "5.0.4"
+flake8-bugbear = "^23.3.12"
+flake8-comprehensions = "^3.12.0"
+flake8-docstrings = "^1.7.0"
+flake8-eradicate = "^1.4.0"
+flake8-fixme = "^1.1.1"
+flake8-implicit-str-concat = "^0.4.0"
+flake8-mutable = "^1.2.0"
+flake8-no-pep420 = "^2.4.0"
+flake8-print = "^5.0.0"
+flake8-return = "^1.2.0"
+flake8-simplify = "^0.20.0"
+ipdb = "^0.13.13"
+isort = "^5.12.0"
+jupyter-black = "^0.3.4"
+pip-audit = "^2.5.5"
+pre-commit = "^3.3.2"
+pylint = "^2.17.4"
+pytest = "^7.3.1"
+towncrier = "^22.12.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+############
+# ✅ Linters
+############
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+default_section = "THIRDPARTY"
+known_first_party = ["chatefficient"]
+sections = "FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
+add_imports = "from __future__ import annotations"
+
+[tool.pylint.MASTER]
+ignore-paths = [".git"]
+load-plugins = []
+
+[tool.pylint."MESSAGES CONTROL"]
+enable = "all"
+max-module-lines = 2000
+max-line-length = 100
+max-locals = 50
+min-similarity-lines = 150
+max-statements = 89
+max-args = 22
+max-branches = 17
+# good-names = []
+# disable = []
+logging-format-style = "new"
+
+##############
+# 📣 Towncrier
+##############
+[tool.towncrier]
+package = "chatefficient"
+package_dir = "."
+filename = "CHANGELOG.md"
+directory = ".changelog/"
+template = ".changelog/template.md"
+title_format = "## [{version}] - {project_date}"
+issue_format = "[#{issue}](https://github.com/CoefficientSystems/chat-efficient/issues/{issue})"
+start_string = "<!-- TOWNCRIER -->\n"
+underlines = ["", ""]
+
+# .added for new features
+# .changed for changes in existing functionality
+# .deprecated for soon-to-be removed features
+# .removed for now removed features
+# .fixed for any bug fixes
+# .security in case of vulnerabilities
+# .analysis for data analyses
+# .docs for documentation improvements
+# .maintenance for maintenance tasks & upgrades
+[[tool.towncrier.type]]
+directory = "added"
+name = "Added"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "changed"
+name = "Changed"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "deprecated"
+name = "Deprecated"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "removed"
+name = "Removed"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "fixed"
+name = "Bug Fixes"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "security"
+name = "Security"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "analysis"
+name = "Analyses"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "docs"
+name = "Improved Documentation"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "maintenance"
+name = "Maintenance Changes"
+showcontent = true

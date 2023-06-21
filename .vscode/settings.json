@@ -1,0 +1,78 @@
+{
+    // editor & autoformatter settings
+    "editor.bracketPairColorization.enabled": true,
+    "editor.formatOnSave": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.trimAutoWhitespace": true,
+    "files.trimTrailingWhitespace": true,
+    "prettier.enable": true,
+
+    // python - black
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [],
+
+    // python - other
+    "python.languageServer": "Pylance",
+
+    // python - linting & static analysis
+    "python.analysis.extraPaths": ["chatefficient"],
+    "python.analysis.typeCheckingMode": "off",
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [],
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [],
+
+    // Python files only
+    "[python]": {
+        // isort on save
+        "editor.codeActionsOnSave": {"source.organizeImports": true},
+        // Stop the 'Black does not support "Format Selection"' message every
+        // time you paste something (https://stackoverflow.com/a/63612401/3279076)
+        "editor.formatOnPaste": false
+    },
+
+    // python - pytest (https://code.visualstudio.com/docs/python/testing)
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": ["tests"],
+
+    // git
+    "git.enabled": true,
+
+    // file associations
+    "files.associations": {
+        "**/*.html": "html",
+        "**/*.js": "javascript",
+        "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+    },
+
+    // markdownlint
+    "markdownlint.run": "onSave",
+    "markdownlint.ignore": [],
+    "markdownlint.config": {
+        // MD003 - Heading style
+        "MD003": {
+            "style": "atx"
+        },
+        // MD007 - Unordered list indentation
+        "MD007": {
+            "start_indented": true,
+            "indent": 2
+        },
+        // MD012 - Multiple consecutive blank lines
+        "MD012": false,
+        // MD022 - Headings should be surrounded by blank lines
+        "MD022": false,
+        // MD024 - Multiple headings with the same content
+        "MD024": false,
+        // MD032 - Lists should be surrounded by blank lines
+        "MD032": false,
+        // MD046 - Code block style
+        "MD046": {
+            "style": "fenced"
+        },
+        "no-hard-tabs": true
+    },
+}

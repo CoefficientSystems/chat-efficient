@@ -1,0 +1,47 @@
+#  Caches
+**/.ipynb_checkpoints/*
+**/__pycache__/*
+*.pyc
+
+# Data
+./data/
+!**/data/**/README.md
+!**/data/**/*.gitkeep
+
+# Secrets
+.env
+
+# Personal TODO files
+TODO.txt
+
+# VisualStudioCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.RData
+
+# Environment
+venv/
+
+# coverage
+.coverage
+.coverage.*
+htmlcov
+
+# IDE config
+.idea/
+ipython_config.py
+profile_default/
+
+# Other
+.DS_Store
+ignore/
+*.log
+*.pem
+
+# Editor
+pyrightconfig.json
+
+# https://www.gitignore.io/
