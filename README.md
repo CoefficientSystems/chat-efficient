@@ -1,10 +1,24 @@
-# ChatEfficient
+# ChatEfficient: How To Build Your Own Private ChatGPT Using Streamlit, LangChain & Vicuna
 
 [![CI](https://github.com/CoefficientSystems/chat-efficient/actions/workflows/main.yaml/badge.svg)](https://github.com/CoefficientSystems/chat-efficient/actions/workflows/main.yaml)
 
 DIY ChatGPT using Streamlit, LangChain and open-source LLMs
 
-## Project cheatsheet
+![Demo](images/vicuna-chat.gif)
+
+## 🎬  Watch again
+
+You can watch the [webinar recording via this link](https://app.session.com/coefficientai/Munch-and-Learn-Tutorial:-How-To-Build-Your-Own-Private-ChatGPT-Using-Streamlit-LangChain-and-Vicuna?s=1&passcode=308697).
+
+You can see all our [upcoming and previous events here](https://coefficient.ai/events).
+
+If you'd like to work with Coefficient to build your own AI-powered apps, please reach out to us at
+[contact@coefficient.ai](contact@coefficient.ai) or [complete our enquiry form](https://coefficient.ai/contact).
+
+If you'd like to register to be notified about upcoming events, you can also do that [here](https://coefficient.ai/contact).
+
+
+## ✅ Project cheatsheet
 
   - **pre-commit:** `pre-commit run --all-files`
   - **pytest:** `pytest` or `pytest -s`
@@ -14,7 +28,7 @@ DIY ChatGPT using Streamlit, LangChain and open-source LLMs
   - **create towncrier entry:** `towncrier create 123.added --edit`
 
 
-## Initial project setup
+## 🏗 Initial project setup
 
 1. See [docs/getting_started.md](docs/getting_started.md) or [docs/quickstart.md](docs/quickstart.md)
    for how to get up & running.
