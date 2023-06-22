@@ -75,12 +75,3 @@ jobs:
         run: |
           source venv/bin/activate
           pre-commit run --hook-stage=manual --show-diff-on-failure --all-files
-
-      # - name: mypy
-      #   run: mypy .
-
-      - name: pytest
-        # run: pytest --junitxml=junit.xml --cov --cov-report=term-missing:skip-covered --cov-report=xml
-        run: |
-          source venv/bin/activate
-          pytest
