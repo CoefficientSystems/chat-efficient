@@ -9,6 +9,10 @@
 !**/data/**/README.md
 !**/data/**/*.gitkeep
 
+# Models
+models/*.bin
+!models/**/*.gitkeep
+
 # Secrets
 .env
 

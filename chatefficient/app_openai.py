@@ -1,9 +1,7 @@
 """app.py
 
-Docs: ???
-
 Examples:
-    $ streamlit run chatefficient/app.py
+    $ streamlit run chatefficient/app_openai.py
 """
 import openai
 import streamlit as st
@@ -56,5 +54,5 @@ with chat_container:
 if st.session_state["generated"]:
     with response_container:
         for i in range(len(st.session_state["generated"])):
-            message(st.session_state["past"][i], is_user=True, key=f"{i}_user")
-            message(st.session_state["generated"][i], key=f"{i}")
+            message(st.session_state["past"][i], is_user=True, key=f"{i}_user")  # user
+            message(st.session_state["generated"][i], key=f"{i}")  # bot
