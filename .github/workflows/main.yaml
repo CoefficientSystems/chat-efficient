@@ -35,7 +35,7 @@ jobs:
           which python
 
       - name: Set up Poetry cache
-        uses: actions/cache@v3.2.6
+        uses: actions/cache@v3.3.1
         with:
           path: venv
           key: venv-${{ matrix.python-version }}-${{ hashFiles('poetry.lock') }}
@@ -64,7 +64,7 @@ jobs:
           print("::set-output name=result::{}".format(result))
 
       - name: Restore pre-commit cache
-        uses: actions/cache@v3.2.6
+        uses: actions/cache@v3.3.1
         with:
           path: ~/.cache/pre-commit
           key: ${{ steps.pre-commit-cache.outputs.result }}-${{ hashFiles('.pre-commit-config.yaml') }}
@@ -75,12 +75,3 @@ jobs:
         run: |
           source venv/bin/activate
           pre-commit run --hook-stage=manual --show-diff-on-failure --all-files
-
-      # - name: mypy
-      #   run: mypy .
-
-      - name: pytest
-        # run: pytest --junitxml=junit.xml --cov --cov-report=term-missing:skip-covered --cov-report=xml
-        run: |
-          source venv/bin/activate
-          pytest

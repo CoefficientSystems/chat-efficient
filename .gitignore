@@ -1,12 +1,17 @@
 #  Caches
 **/.ipynb_checkpoints/*
 **/__pycache__/*
+**/joblib/*
 *.pyc
 
 # Data
 ./data/
 !**/data/**/README.md
 !**/data/**/*.gitkeep
+
+# Models
+models/*.bin
+!models/**/*.gitkeep
 
 # Secrets
 .env

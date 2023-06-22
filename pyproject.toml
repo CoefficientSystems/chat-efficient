@@ -18,7 +18,25 @@ packages = [
 python = "^3.11.3"
 # Everything below here is alphabetically sorted
 ipykernel = "^6.23.2"
+joblib = "^1.2.0"
 jupyterlab = "^4.0.2"
+lxml = "^4.9.2"
+openai = "^0.27.8"
+streamlit = "^1.23.1"
+streamlit-chat = "^0.0.2.2"
+watchdog = "^3.0.0"
+langchain = "^0.0.208"
+huggingface-hub = "^0.15.1"
+ipywidgets = "^8.0.6"
+tqdm = "^4.65.0"
+transformers = "^4.30.2"
+torch = "^2.0.1"
+torchvision = "^0.15.2"
+torchaudio = "^2.0.2"
+xformers = "^0.0.20"
+tokenizers = "^0.13.3"
+sentencepiece = "^0.1.99"
+protobuf = "<3.21"
 
 [tool.poetry.dev-dependencies]
 # Everything below here is alphabetically sorted
@@ -63,7 +81,6 @@ line_length = 100
 default_section = "THIRDPARTY"
 known_first_party = ["chatefficient"]
 sections = "FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
-add_imports = "from __future__ import annotations"
 
 [tool.pylint.MASTER]
 ignore-paths = [".git"]
@@ -79,7 +96,7 @@ max-statements = 89
 max-args = 22
 max-branches = 17
 # good-names = []
-# disable = []
+disable = ["invalid-name", "pointless-statement"]
 logging-format-style = "new"
 
 ##############
