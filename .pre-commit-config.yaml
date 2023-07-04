@@ -144,9 +144,9 @@ repos:
         stages: [manual]
       - id: pip-audit
         name: pip-audit
-        entry: pip-audit
-        # Exclusions example
-        # entry: pip-audit --ignore-vuln PYSEC-2022-42974 --ignore-vuln GHSA-w596-4wvx-j9j6
+        # entry: pip-audit
+        # langchain exclusions
+        entry: pip-audit --ignore-vuln PYSEC-2023-91 --ignore-vuln PYSEC-2023-92
         language: system
         always_run: true
         pass_filenames: false
