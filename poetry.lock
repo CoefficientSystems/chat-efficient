@@ -743,20 +743,19 @@ typing = ["mypy (>=0.990)"]
 
 [[package]]
 name = "cyclonedx-python-lib"
-version = "2.7.1"
+version = "4.0.1"
 description = "A library for producing CycloneDX SBOM (Software Bill of Materials) files."
 optional = false
-python-versions = ">=3.6,<4.0"
+python-versions = ">=3.7,<4.0"
 files = [
-    {file = "cyclonedx-python-lib-2.7.1.tar.gz", hash = "sha256:493bf2f30e26c48f305f745ed8580ce10d05a8d68d62a598fe95f05a0d9007dc"},
-    {file = "cyclonedx_python_lib-2.7.1-py3-none-any.whl", hash = "sha256:fabc4c8baf722faeea01c3bbca83730e3489dfb37d85c6036baa67a9a7519d40"},
+    {file = "cyclonedx_python_lib-4.0.1-py3-none-any.whl", hash = "sha256:907b64f00df85d727a425de86604768b248cf19285993729e04f17bec767f692"},
+    {file = "cyclonedx_python_lib-4.0.1.tar.gz", hash = "sha256:878e33b8e0080c786f6cbd4c6f87ad610db65d6a3a686a5698415d9cfcd8925d"},
 ]
 
 [package.dependencies]
-packageurl-python = ">=0.9"
-setuptools = ">=47.0.0"
+packageurl-python = ">=0.11"
+py-serializable = ">=0.11.1,<0.12.0"
 sortedcontainers = ">=2.4.0,<3.0.0"
-toml = ">=0.10.0,<0.11.0"
 
 [[package]]
 name = "dataclasses-json"
@@ -1667,6 +1666,7 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, !=3.6.*"
 files = [
     {file = "jsonpointer-2.4-py2.py3-none-any.whl", hash = "sha256:15d51bba20eea3165644553647711d150376234112651b4f1811022aecad7d7a"},
+    {file = "jsonpointer-2.4.tar.gz", hash = "sha256:585cee82b70211fa9e6043b7bb89db6e1aa49524340dde8ad6b63206ea689d88"},
 ]
 
 [[package]]
@@ -2999,18 +2999,18 @@ pip = "*"
 
 [[package]]
 name = "pip-audit"
-version = "2.5.6"
+version = "2.6.1"
 description = "A tool for scanning Python environments for known vulnerabilities"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pip_audit-2.5.6-py3-none-any.whl", hash = "sha256:7673bea690470024f1aec9be26055334cb987a530c6a431a31c347f66064e475"},
-    {file = "pip_audit-2.5.6.tar.gz", hash = "sha256:04fc0ad1727674181bda243a457af5a73038ee691dd9b8afc71f7e9292ce3912"},
+    {file = "pip_audit-2.6.1-py3-none-any.whl", hash = "sha256:8a32bb67dca6a76c244bbccebed562c0f6957b1fc9d34d59a9ec0fbff0672ae0"},
+    {file = "pip_audit-2.6.1.tar.gz", hash = "sha256:55c9bd18b0fe3959f73397db08d257c6012ad1826825e3d74cb6c3f79e95c245"},
 ]
 
 [package.dependencies]
-CacheControl = {version = ">=0.12.0", extras = ["filecache"]}
-cyclonedx-python-lib = ">=2.0,<2.5.0 || >2.5.0,<3.0"
+CacheControl = {version = ">=0.13.0", extras = ["filecache"]}
+cyclonedx-python-lib = ">=4.0,<5.0"
 html5lib = ">=1.1"
 packaging = ">=23.0.0"
 pip-api = ">=0.0.28"
@@ -3018,12 +3018,11 @@ pip-requirements-parser = ">=32.0.0"
 requests = ">=2.31.0"
 rich = ">=12.4"
 toml = ">=0.10"
-urllib3 = ">=1.26,<2.0"
 
 [package.extras]
 dev = ["build", "bump (>=1.3.2)", "pip-audit[doc,lint,test]"]
 doc = ["pdoc"]
-lint = ["black (>=22.3.0)", "interrogate", "isort", "mypy", "ruff (<0.0.270)", "types-html5lib", "types-requests", "types-toml"]
+lint = ["black (>=22.3.0)", "interrogate", "isort", "mypy", "ruff (<0.0.281)", "types-html5lib", "types-requests", "types-toml"]
 test = ["coverage[toml]", "pretend", "pytest", "pytest-cov"]
 
 [[package]]
@@ -3202,6 +3201,20 @@ files = [
 
 [package.extras]
 tests = ["pytest"]
+
+[[package]]
+name = "py-serializable"
+version = "0.11.1"
+description = "Library for serializing and deserializing Python Objects to and from JSON and XML."
+optional = false
+python-versions = ">=3.7,<4.0"
+files = [
+    {file = "py-serializable-0.11.1.tar.gz", hash = "sha256:ba0e1287b9e4f645a5334f1913abd8e647e7250209f84f55dce3909498a6f586"},
+    {file = "py_serializable-0.11.1-py3-none-any.whl", hash = "sha256:79e21f0672822e6200b15f45ce9f636e8126466f62dbd7d488c67313c72b5c3e"},
+]
+
+[package.dependencies]
+defusedxml = ">=0.7.1,<0.8.0"
 
 [[package]]
 name = "pyarrow"
@@ -5112,5 +5125,5 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.11.3"
+python-versions = "~3.11"
 content-hash = "933e2b16e2883c9d85a15f9bcbd8e02acfc5702b4dbd6b2a46bda0b7537f8eb5"
