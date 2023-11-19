@@ -11,7 +11,7 @@ classifiers = ["Private :: Do Not Upload"]
 packages = [{ include = "chatefficient", from = "chatefficient" }]
 
 [tool.poetry.dependencies]
-python = "3.10.13"
+python = ">=3.10.13,<3.11"
 # Everything below here is alphabetically sorted
 huggingface-hub = "^0.19.4"
 ipykernel = "^6.26.0"
