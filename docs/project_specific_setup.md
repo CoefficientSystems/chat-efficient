@@ -28,7 +28,7 @@ Run the webserver:
 # config your ggml model path
 # make sure it is ggml v3
 # make sure it is q4_0
-export MODEL=./models/llama-7b.ggmlv3.q4_0.bin
+export MODEL=./models/llama-2-13b-chat.ggmlv3.q4_0.bin
 python3 -m llama_cpp.server --model $MODEL  --n_gpu_layers 1
 
 # Note: If you omit the --n_gpu_layers 1 then CPU will be used
@@ -38,7 +38,7 @@ Try the Python API:
 
 ```python
 from llama_cpp import Llama
-llm = Llama(model_path="./models/llama-7b.ggmlv3.q4_0.bin")
+llm = Llama(model_path="./models/llama-2-13b-chat.ggmlv3.q4_0.bin")
 output = llm("Q: Name the planets in the solar system? A: ", max_tokens=64, stop=["Q:", "\n"], echo=True)
 print(output)
 print(output['choices'][0]['text'])
