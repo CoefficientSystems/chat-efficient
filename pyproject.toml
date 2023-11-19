@@ -81,7 +81,12 @@ known_first_party = ["chatefficient"]
 sections = "FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
 
 [tool.pylint.MASTER]
-ignore-paths = [".git"]
+ignore-paths = [
+  ".git",
+  "chatefficient/app_llama2.py",
+  "chatefficient/app_openai.py",
+  "chatefficient/app_langchain.py",
+]
 load-plugins = []
 
 [tool.pylint."MESSAGES CONTROL"]
