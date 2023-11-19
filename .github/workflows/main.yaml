@@ -50,6 +50,7 @@ jobs:
           source venv/bin/activate
           which python
           poetry install --no-root
+          poetry self add poetry-plugin-export
 
       - name: Compute pre-commit cache key
         id: pre-commit-cache

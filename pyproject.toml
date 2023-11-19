@@ -13,6 +13,8 @@ packages = [{ include = "chatefficient", from = "chatefficient" }]
 [tool.poetry.dependencies]
 python = ">=3.10.13,<3.11"
 # Everything below here is alphabetically sorted
+# xformers = "^0.0.20"
+fastapi = "^0.104.1"
 huggingface-hub = "^0.19.4"
 ipykernel = "^6.26.0"
 ipywidgets = "^8.1.1"
@@ -24,7 +26,10 @@ lxml = "^4.9.3"
 openai = "^1.3.3"
 pandas = "^2.1.3"
 protobuf = "^4.25.1"
+pydantic-settings = "^2.1.0"
 sentencepiece = "^0.1.99"
+sse-starlette = "^1.8.1"
+starlette-context = "^0.3.6"
 streamlit = "^1.28.2"
 streamlit-chat = "^0.1.1"
 tokenizers = "^0.15.0"
@@ -33,8 +38,8 @@ torchaudio = "^2.1.1"
 torchvision = "^0.16.1"
 tqdm = "^4.66.1"
 transformers = "^4.35.2"
+uvicorn = "^0.24.0.post1"
 watchdog = "^3.0.0"
-# xformers = "^0.0.20"
 
 [tool.poetry.dev-dependencies]
 # Everything below here is alphabetically sorted

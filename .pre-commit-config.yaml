@@ -135,7 +135,7 @@ repos:
     hooks:
       - id: pylint
         name: pylint
-        entry: pylint chatefficient tests
+        entry: pylint chatefficient
         # entry: bash -c 'pylint ./path/package1/; pylint ./path/package2/'
         language: system
         types: [python]
