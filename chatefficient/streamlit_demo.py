@@ -8,6 +8,9 @@ Docs:
 Examples:
     $ streamlit hello
     $ streamlit run chatefficient/streamlit_demo.py
+
+Visit https://YOUR-CUSTOM-URL.sagemaker.aws/proxy/{YOUR-PROXY-HERE}/
+e.g.  https://obt-workshop.notebook.eu-west-2.sagemaker.aws/proxy/8501/
 """
 
 

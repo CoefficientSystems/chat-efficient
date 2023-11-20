@@ -3,13 +3,14 @@
 Examples:
     $ streamlit run chatefficient/app_openai.py
 """
-import openai
 import streamlit as st
 from joblib import Memory
+from openai import OpenAI
 from streamlit_chat import message
 
 LOCATION = "./cachedir"
 MEMORY = Memory(LOCATION, verbose=0)
+CLIENT = OpenAI()
 
 
 @MEMORY.cache
@@ -17,7 +18,7 @@ def generate_response(prompt, model="gpt-3.5-turbo"):
     """Prompt GPT API for a chat completion response."""
     st.session_state["context"].append({"role": "user", "content": prompt})
 
-    completion = openai.ChatCompletion.create(model=model, messages=st.session_state["context"])
+    completion = CLIENT.chat.completions.create(model=model, messages=st.session_state["context"])
     response = completion.choices[0].message.content
     st.session_state["context"].append({"role": "assistant", "content": response})
 

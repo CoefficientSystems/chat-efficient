@@ -5,33 +5,27 @@ Examples:
 """
 import streamlit as st
 from joblib import Memory
-from langchain import LLMChain, PromptTemplate
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from langchain.chains import LLMChain
 from langchain.llms import LlamaCpp
 from langchain.memory import ConversationBufferWindowMemory
+from langchain.prompts import PromptTemplate
 from streamlit_chat import message
 
 LOCATION = "./cachedir"
 MEMORY = Memory(LOCATION, verbose=0)
 
-# Callbacks support token-wise streaming
-callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
-# Verbose is required to pass to the callback manager
-n_gpu_layers = 40  # Change this value based on your model and your GPU VRAM pool.
-n_batch = 512  # Should be between 1 and n_ctx, consider the amount of VRAM in your GPU.
-n_ctx = 512 * 2
-
 # Make sure the model path is correct for your system!
 llm = LlamaCpp(
-    n_ctx=n_ctx,
-    # model_path="./models/llama-7b.ggmlv3.q4_0.bin",
-    model_path="./models/ggml-vic13b-uncensored-q4_0.bin",
-    n_gpu_layers=n_gpu_layers,
-    n_batch=n_batch,
-    callback_manager=callback_manager,
+    n_ctx=512 * 2,
+    model_path="../models/llama-2-7b-chat.Q4_K_M.gguf",
+    n_gpu_layers=40,  # Change this value based on your model and your GPU VRAM pool.
+    n_batch=512,  # Should be between 1 and n_ctx, consider the amount of VRAM in your GPU.
+    callback_manager=CallbackManager([StreamingStdOutCallbackHandler()]),
     verbose=True,
-    pipeline_kwargs={"max_new_tokens": 64 * 4},
+    model_kwargs={"max_new_tokens": 64 * 4},
+    stop=["Human:", "Input:"],
 )
 
 
@@ -48,11 +42,14 @@ def generate_response(human_input):
 # Initialize session state variables
 if "chain" not in st.session_state:
     template = """
-    You are a mind reader with magical abilities.
+    You are a mindreader with magical abilities.
+    You are very over-dramatic and speak like a mysterious shaman.
     You will be given something to guess, such as an animal, or a famous person.
-    You will ask a question, I will provide an answer, and then you will guess.
-    If your guess is wrong, then you must ask another question.
-    Repeat this until you get the right answer.
+    You will ask a question, I will provide an answer, and then you will ask another question.
+    Try to ask questions that narrow down what the answer might be.
+    If you are very confident, you can guess what it is.
+    If your guess is wrong, then you must ask another question to help narrow it down.
+    Repeat this until you I tell you that you have the right answer.
     Your goal is to find the right answer in as few questions as possible. Only make a guess
     when you are confident, otherwise ask more questions that narrow down the possibilities.
 

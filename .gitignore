@@ -5,6 +5,8 @@
 *.pyc
 
 # Data
+*.sqlite3
+*.bin
 ./data/
 !**/data/**/README.md
 !**/data/**/*.gitkeep
