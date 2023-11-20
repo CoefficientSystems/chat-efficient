@@ -1,38 +1,28 @@
 """Streamlit app using LangChain + locally-running Vicuna.
 
 Examples:
-    $ streamlit run chatefficient/app_llama2.py
+    $ streamlit run chatefficient/app_translator.py
 """
 import streamlit as st
 from joblib import Memory
-from langchain import LLMChain, PromptTemplate
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from langchain.chains import LLMChain
 from langchain.llms import LlamaCpp
-from langchain.memory import ConversationBufferWindowMemory
+from langchain.prompts import PromptTemplate
 from streamlit_chat import message
 
 LOCATION = "./cachedir"
 MEMORY = Memory(LOCATION, verbose=0)
 
-# Callbacks support token-wise streaming
-callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
-# Verbose is required to pass to the callback manager
-n_gpu_layers = 40  # Change this value based on your model and your GPU VRAM pool.
-n_batch = 512  # Should be between 1 and n_ctx, consider the amount of VRAM in your GPU.
-n_ctx = 512 * 2
-
-# Make sure the model path is correct for your system!
 llm = LlamaCpp(
-    n_ctx=n_ctx,
-    # model_path="./models/llama-7b.ggmlv3.q4_0.bin",
-    # model_path="./models/ggml-vic13b-uncensored-q4_0.bin",
-    model_path="./models/llama-2-13b-chat.ggmlv3.q4_0.bin",
-    n_gpu_layers=n_gpu_layers,
-    n_batch=n_batch,
-    callback_manager=callback_manager,
+    n_ctx=512 * 2,
+    model_path="./models/llama-2-13b-chat.Q4_K_M.gguf",
+    n_gpu_layers=20,  # Change this value based on your model and your GPU VRAM pool.
+    n_batch=512,  # Should be between 1 and n_ctx, consider the amount of VRAM in your GPU.
+    callback_manager=CallbackManager([StreamingStdOutCallbackHandler()]),
     verbose=True,
-    pipeline_kwargs={"max_new_tokens": 64 * 4},
+    model_kwargs={"max_new_tokens": 64 * 4},
     stop=["Human:", "Input:"],
 )
 
@@ -49,14 +39,6 @@ def generate_response(human_input):
 
 # Initialize session state variables
 if "chain" not in st.session_state:
-    # template = """
-    # You are a helpful assistant.
-
-    # {history}
-
-    # Human: {human_input}
-    # Assistant:"""
-
     template = """
     You are my Mandarin Chinese teacher. I will give you an input in English, and you will
     respond with the corresponding translation in Mandarin Chinese in both pinyin and hanzi.
@@ -64,15 +46,8 @@ if "chain" not in st.session_state:
     Input: {human_input}
     Response:"""
 
-    # prompt = PromptTemplate(input_variables=["history", "human_input"], template=template)
     prompt = PromptTemplate(input_variables=["human_input"], template=template)
-
-    chatgpt_chain = LLMChain(
-        llm=llm,
-        prompt=prompt,
-        verbose=True,
-        memory=ConversationBufferWindowMemory(k=10),
-    )
+    chatgpt_chain = LLMChain(llm=llm, prompt=prompt, verbose=True)
     st.session_state["chain"] = chatgpt_chain
 
 
@@ -99,14 +74,11 @@ with chat_container:
         st.session_state["generated"].append(output)
 
 
-# INITIAL_MESSAGE = """
-# You are a helpful assistant.
-# """
-
-INITIAL_MESSAGE = """
-You are my Mandarin Chinese teacher. I will give you an input in English, and you will
-respond with the corresponding translation in Mandarin Chinese in both pinyin and hanzi.
-"""
+INITIAL_MESSAGE = (
+    "You are my Mandarin Chinese teacher. I will give you an input in English, and "
+    "you will respond with the corresponding translation in Mandarin Chinese in "
+    "both pinyin and hanzi."
+)
 
 with response_container:
     message(INITIAL_MESSAGE)
