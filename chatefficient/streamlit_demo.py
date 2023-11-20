@@ -10,31 +10,37 @@ Examples:
     $ streamlit run chatefficient/streamlit_demo.py
 """
 
+
 import pandas as pd
-from streamlit_chat import message
+import streamlit as st
 
 df = pd.DataFrame({"first column": [1, 2, 3, 4], "second column": [10, 20, 30, 40]})
 
-######### Part 1: Magic Commands #########
+
+# ######### Part 1: st.write() #########
+st.write(df)
+
+######### Part 2: Magic Commands #########
 # df
 
 
-# ######### Part 2: st.write() #########
-# st.write(df)
-
-
-# ######### Part 3: Plotting Charts #########
+######### Part 3: Plotting Charts #########
+# import numpy as np
 # chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
 # st.line_chart(chart_data)
 
 
-# ######### Part 4: Maps #########
+######### Part 4: Maps #########
+
 # old_street = [51.525, -0.088]
-# map_data = pd.DataFrame(np.random.randn(50, 2) / [150, 150] + old_street, columns=["lat", "lon"])
+# map_data = pd.DataFrame(
+#     np.random.randn(50, 2) / [150, 150] + old_street,
+#     columns=["lat", "lon"]
+#     )
 # st.map(map_data)
 
 
-# ######### Part 5: Widgets #########
+######### Part 5: Widgets #########
 # x = st.slider("x")  # 👈 this is a widget
 # st.write(x, "squared is", x * x)
 
@@ -43,7 +49,7 @@ df = pd.DataFrame({"first column": [1, 2, 3, 4], "second column": [10, 20, 30, 4
 # st.write("You selected: ", option)
 
 
-# ######### Part 6: Sidebar #########
+######### Part 6: Sidebar #########
 # # Add a selectbox to the sidebar:
 # add_selectbox = st.sidebar.selectbox(
 #     "How would you like to be contacted?",
@@ -54,7 +60,7 @@ df = pd.DataFrame({"first column": [1, 2, 3, 4], "second column": [10, 20, 30, 4
 # add_slider = st.sidebar.slider("Select a range of values", 0.0, 100.0, (25.0, 75.0))
 
 
-# ######### Part 7: Session State #########
+######### Part 7: Session State #########
 # # Initialization
 # if "name" not in st.session_state:
 #     st.session_state["name"] = "DEFAULT NAME"
@@ -65,8 +71,11 @@ df = pd.DataFrame({"first column": [1, 2, 3, 4], "second column": [10, 20, 30, 4
 # st.session_state.name
 
 
-# ######### Part 8: Streamlit Chat #########
-message("Hello human 👋")
-message("Hey there bot!", is_user=True)  # align's the message to the right
-message("Hope your webinar is going OK?")
-message("Me too!", is_user=True)
+######### Part 8: Streamlit Chat #########
+
+# from streamlit_chat import message
+
+# message("Hello human 👋")
+# message("Hey there bot!", is_user=True)  # align's the message to the right
+# message("Hope your webinar is going OK?")
+# message("Me too!", is_user=True)

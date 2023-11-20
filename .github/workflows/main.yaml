@@ -16,10 +16,10 @@ jobs:
     timeout-minutes: 30
     strategy:
       matrix:
-        python-version: ["3.11"]
+        python-version: ["3.10"]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
@@ -35,7 +35,7 @@ jobs:
           which python
 
       - name: Set up Poetry cache
-        uses: actions/cache@v3.3.1
+        uses: actions/cache@v3.3.2
         with:
           path: venv
           key: venv-${{ matrix.python-version }}-${{ hashFiles('poetry.lock') }}
@@ -50,6 +50,7 @@ jobs:
           source venv/bin/activate
           which python
           poetry install --no-root
+          poetry self add poetry-plugin-export
 
       - name: Compute pre-commit cache key
         id: pre-commit-cache
@@ -64,7 +65,7 @@ jobs:
           print("::set-output name=result::{}".format(result))
 
       - name: Restore pre-commit cache
-        uses: actions/cache@v3.3.1
+        uses: actions/cache@v3.3.2
         with:
           path: ~/.cache/pre-commit
           key: ${{ steps.pre-commit-cache.outputs.result }}-${{ hashFiles('.pre-commit-config.yaml') }}
