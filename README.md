@@ -17,6 +17,14 @@ If you'd like to work with Coefficient to build your own AI-powered apps, please
 
 If you'd like to register to be notified about upcoming events, you can also do that [here](https://coefficient.ai/contact).
 
+##  💪 Learn by doing
+
+1. [Learn OpenAI](notebooks/openai.ipynb)
+2. [Learn Streamlit](chatefficient/streamlit_demo.py)
+3. [OpenAI + Streamlit = GPT4 chatbot](chatefficient/app_openai.py)
+4. [Learn LangChain](notebooks/LangChain.ipynb)
+5. [OpenAI + LangChain = local chatbot](chatefficient/app_langchain.py)
+6. [Learn Chroma](notebooks/Chroma.ipynb)
 
 ## ✅ Project cheatsheet
 

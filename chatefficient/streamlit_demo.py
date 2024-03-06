@@ -21,7 +21,7 @@ df = pd.DataFrame({"first column": [1, 2, 3, 4], "second column": [10, 20, 30, 4
 
 
 # ######### Part 1: st.write() #########
-st.write(df)
+# st.write(df)
 
 ######### Part 2: Magic Commands #########
 # df
@@ -34,7 +34,6 @@ st.write(df)
 
 
 ######### Part 4: Maps #########
-
 # old_street = [51.525, -0.088]
 # map_data = pd.DataFrame(
 #     np.random.randn(50, 2) / [150, 150] + old_street,
@@ -76,9 +75,10 @@ st.write(df)
 
 ######### Part 8: Streamlit Chat #########
 
-# from streamlit_chat import message
+st.chat_message("ai").write("Hello human 👋")
 
-# message("Hello human 👋")
-# message("Hey there bot!", is_user=True)  # align's the message to the right
-# message("Hope your webinar is going OK?")
-# message("Me too!", is_user=True)
+st.chat_message("human").write("Hey there bot!")  # user input
+
+st.chat_message("ai").write("I hope your talk is going OK?")
+
+st.chat_message("human").write("Me too!")

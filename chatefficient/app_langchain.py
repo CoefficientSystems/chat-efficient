@@ -19,13 +19,13 @@ MEMORY = Memory(LOCATION, verbose=0)
 # Make sure the model path is correct for your system!
 llm = LlamaCpp(
     n_ctx=512 * 2,
-    model_path="../models/llama-2-7b-chat.Q4_K_M.gguf",
+    model_path="./models/llama-2-7b-chat.Q4_K_M.gguf",
     n_gpu_layers=40,  # Change this value based on your model and your GPU VRAM pool.
     n_batch=512,  # Should be between 1 and n_ctx, consider the amount of VRAM in your GPU.
     callback_manager=CallbackManager([StreamingStdOutCallbackHandler()]),
     verbose=True,
     model_kwargs={"max_new_tokens": 64 * 4},
-    stop=["Human:", "Input:"],
+    stop=["Human:", "Input:", "Mind Reader:"],
 )
 
 
@@ -81,13 +81,9 @@ chat_container = st.container()
 
 
 with chat_container:
-    with st.form(key="my_form", clear_on_submit=True):
-        user_input = st.text_area("You:", key="input", height=100)
-        submit_button = st.form_submit_button(label="Send")
-
-    if submit_button and user_input:
-        output = generate_response(user_input).strip()
-        st.session_state["past"].append(user_input)
+    if prompt := st.chat_input("Say something"):
+        output = generate_response(prompt).strip()
+        st.session_state["past"].append(prompt)
         st.session_state["generated"].append(output)
 
 
@@ -101,5 +97,5 @@ with response_container:
     message(INITIAL_MESSAGE)
     if st.session_state["generated"]:
         for i in range(len(st.session_state["generated"])):
-            message(st.session_state["past"][i], is_user=True, key=f"{i}_user")
-            message(st.session_state["generated"][i], key=f"{i}")
+            st.chat_message("user").write(st.session_state["past"][i])
+            st.chat_message("ai").write(st.session_state["generated"][i])
