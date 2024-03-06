@@ -19,6 +19,10 @@ Create a new terminal and run the following:
 # Switch to a bash shell
 bash
 
+# Git clone the repo
+cd ~/SageMaker
+git clone https://github.com/CoefficientSystems/chat-efficient
+
 # Change to the repo root
 cd ~/SageMaker/chat-efficient
 
