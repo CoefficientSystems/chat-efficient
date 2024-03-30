@@ -45,6 +45,8 @@ tqdm = "^4.66.1"
 transformers = "^4.35.2"
 uvicorn = "^0.24.0.post1"
 watchdog = "^3.0.0"
+chroma = "^0.2.0"
+ollama = "^0.1.7"
 
 [tool.poetry.dev-dependencies]
 # Everything below here is alphabetically sorted
